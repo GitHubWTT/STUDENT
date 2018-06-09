@@ -12,6 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .h2{font-size:30px;filter:glow(color=skyblue,direction=2);font-family:华文行楷;}
 </style>
 <body>
+<body background="1.jpg">
 <div class="header">
 <tr>
 <td>
@@ -30,14 +31,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 /*style of main content*/</style>
  <div class="topnavi">
 <a href="主班级网页.jsp">首页</a>
-<a href="www.gzu.edu.cn/">班级情况</a>
+<a href="www.gzu.edu.cn/">学校主页</a>
+<a href="www.gzu.edu.cn/">学院主页</a>
 <a href="class_apply.jsp">学生信息选择</a>
 <a href="login.jsp">用户登录</a>
+<a href="FindServlet">显示</a>
+<a href="tianjia.jsp">增加</a>
+<a href="found">修改</a>
 </div>   
   <head>  
     <base href="<%=basePath%>">  
       
-    <title>My JSP 'welcom.jsp' starting page</title>  
+    <title>班级管理</title>  
       
  <!--    <meta http-equiv="pragma" content="no-cache">  
     <meta http-equiv="cache-control" content="no-cache">  
@@ -56,10 +61,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </tr>  
                         <tr>  
                             <td>欢迎你，</td>  
-                            <td>${username }</td>  
-                        </tr>  
+                            <td>${username}</td>                           
                         <tr>  
                             <td colspan="2"><input type="submit" value="退出" /></td> 
+                            
                         </tr>  
                     </table>  
                 </form></td>   

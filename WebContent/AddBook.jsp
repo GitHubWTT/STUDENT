@@ -1,21 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import = "java.sql.*"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.PreparedStatement"%>
-<% request.setCharacterEncoding("utf-8");  
-response.setContentType("textml;charset=utf-8");  %>
 <html>
 <head>
-<%request.setCharacterEncoding("utf-8");%>
+<style>
+/* stytle of top navi*/
+.topnavi{overflow:hidden;background-color:#333;}
+.topnavi a {display:block;text-decoration:none;color:#f2f2f2;float:left;
+/* all in one line*/padding:14px;}
+.topnavi a:hover{background-color:#2691E;color:green;}
+/*style of main content*/</style>
+ <div class="topnavi">
+<a href="主班级网页.jsp">首页</a>
+<a href="www.gzu.edu.cn/">班级情况</a>
+<a href="class_apply.jsp">学生信息选择</a>
+<a href="login.jsp">用户登录</a>
+<a href="FindServlet">显示</a>
+<a href="tianjia.jsp">增加</a>
+<a href="found">修改</a>
+</div> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>添加结果</title>
+<title>班级管理</title>
 </head>
 <body>
 	
-	<jsp:useBean id="student" class="bean.student"></jsp:useBean>
-	<jsp:setProperty property="*" name="userinfo"/>
+	<jsp:useBean id="book" class="com.lyq.bean.Book"></jsp:useBean>
+	<jsp:setProperty property="*" name="book"/>
 	<%
 		try {
 			// 加载数据库驱动，注册到驱动管理器
@@ -29,18 +43,19 @@ response.setContentType("textml;charset=utf-8");  %>
 			// 创建Connection连接
 			Connection conn = DriverManager.getConnection(url,username,password);
 			// 添加图书信息的SQL语句
-			String sql = "insert into student(name,num,sex,password) values(?,?,?,?)";
+			String sql = "insert into tb_book(name,price,bookCount,author) values(?,?,?,?)";
 			// 获取PreparedStatement
 			PreparedStatement ps = conn.prepareStatement(sql);
 			// 对SQL语句中的第1个参数赋值
-			ps.setString(1, student.getname());
-			System.out.println("name："+student.getname());
+			ps.setString(1, book.getName());
+			System.out.println("name："+book.getName());
 			// 对SQL语句中的第2个参数赋值
-			ps.setInt(2, student.getnum());
+			ps.setDouble(2, book.getPrice());
 			// 对SQL语句中的第3个参数赋值
-			ps.setString(3,student.getsex());
+			ps.setInt(3,book.getbookCount());
 			// 对SQL语句中的第4个参数赋值
-			ps.setString(4,student.getpassword());
+			ps.setString(4, book.getauthor());
+			// 执行更新操作，返回所影响的行数
 			int row = ps.executeUpdate();
 			// 判断是否更新成功
 			if(row > 0){
@@ -52,11 +67,15 @@ response.setContentType("textml;charset=utf-8");  %>
 			// 关闭Connection，释放资源
 			conn.close();
 		} catch (Exception e) {
-			out.print("学生信息添加失败！");
+			out.print("图书信息添加失败！");
 			e.printStackTrace();
 		}
 	%>
 	<br>
-	<a href="index.jsp">返回</a>
 </body>
+    <style>
+.footer{background-color:#D19275;text-align:center;padding:15px 10px;;length=400px;margin-top:150px;}</style>
+<body>
+<div class="footer">信管161班web开发课程设计copyrightEmail:161
+</div>
 </html>

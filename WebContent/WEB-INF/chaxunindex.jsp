@@ -4,9 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>查看所有图书</title>
 </head>
 <body>
-RFEDWS
+	<a href="found">查看所有图书</a>
 </body>
-</html>

@@ -1,22 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%  String course=request.getParameter("course");
-    String major=request.getParameter("major");
-    String grade=request.getParameter("class_grade");
-    String num=request.getParameter("students_num");
-    String course_time=request.getParameter("jieci");
-    String swk=request.getParameter("start_week");
-    String ewk=request.getParameter("end_week");
- %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-  <style>
+
+<%@page import="java.util.*"%>
+<%@page import="com.lyq.bean.*"%><html>
+ <style>
 .header{background-color:#D19275;padding:50px;text-align:center;}
 .header{font-size:60px;filter:glow(color=skyblue,direction=2);font-family:华文行楷;}
 .h2{font-size:30px;filter:glow(color=skyblue,direction=2);font-family:华文行楷;}
 </style>
 <body>
-<body background="1.jpg">
 <div class="header">
 <tr>
 <td>
@@ -42,20 +35,50 @@
 <a href="FindServlet">显示</a>
 <a href="tianjia.jsp">增加</a>
 <a href="found">修改</a>
-</div>
-
+</div>  
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>班级管理</title>
+<style type="text/css">
+	td{font-size: 12px;}
+	h2{margin: 0px}
+</style>
+</head>
 <body>
-
-<div class="content main">课程为： <%= course %><br>
-专业为：<%= major %><br>
-班级为：<%= grade %><br>
-人数为：<%= num %>人<br>
-课程时间为：<%= course_time %>节<br>
-起始周为：<%= swk %>周<br>
-结束周为：<%= ewk %>周<br>
-</div>
-</body>
-	    <style>
+<table align="center" width="450" border="1" height="180" bordercolor="white" bgcolor="black" cellpadding="1" cellspacing="1">
+	<tr bgcolor="white">
+		<td align="center" colspan="5">
+			<h2>所有书本信息</h2>
+		</td>
+	</tr>
+	<tr align="center" bgcolor="#e1ffc1" >
+		<td><b>ID</b></td>
+		<td><b>名称</b></td>
+		<td><b>价格</b></td>
+		<td><b>数量</b></td>
+		<td><b>作者</b></td>
+	</tr>
+	<%
+		List<Book> list = (List<Book>)request.getAttribute("list");
+		for(Book book: list){
+	%>
+	<tr align="center" bgcolor="white">
+		<td><%=book.getId()%></td>
+		<td><%=book.getName()%></td>
+		<td><%=book.getPrice()%></td>
+		<td><%=book.getbookCount()%></td>
+		<td><%=book.getauthor()%></td>
+	</tr>
+	<%	
+		}
+	%>
+	<tr>
+		<td align="center" colspan="5" bgcolor="white">
+			<%=request.getAttribute("bar")%>
+		</td>
+	</tr>
+</table>
+	<style>
 .footer{background-color:#D19275;text-align:center;padding:15px 10px;;length=400px;margin-top:150px;}</style>
 <body>
 <div class="footer">信管161班web开发课程设计copyrightEmail:161

@@ -1,15 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%  String course=request.getParameter("course");
-    String major=request.getParameter("major");
-    String grade=request.getParameter("class_grade");
-    String num=request.getParameter("students_num");
-    String course_time=request.getParameter("jieci");
-    String swk=request.getParameter("start_week");
-    String ewk=request.getParameter("end_week");
- %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<head>
   <style>
 .header{background-color:#D19275;padding:50px;text-align:center;}
 .header{font-size:60px;filter:glow(color=skyblue,direction=2);font-family:华文行楷;}
@@ -42,19 +35,61 @@
 <a href="FindServlet">显示</a>
 <a href="tianjia.jsp">增加</a>
 <a href="found">修改</a>
-</div>
-
+</div>   
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>班级管理</title>
+<script type="text/javascript">
+	function check(form){
+		with(form){
+			if(name.value == ""){
+				alert("图书名称不能为空");
+				return false;
+			}
+			if(price.value == ""){
+				alert("价格不能为空");
+				return false;
+			}
+			if(author.value == ""){
+				alert("作者不能为空");
+				return false;
+			}
+			return true;
+		}
+	}
+</script>
+</head>
 <body>
-
-<div class="content main">课程为： <%= course %><br>
-专业为：<%= major %><br>
-班级为：<%= grade %><br>
-人数为：<%= num %>人<br>
-课程时间为：<%= course_time %>节<br>
-起始周为：<%= swk %>周<br>
-结束周为：<%= ewk %>周<br>
-</div>
-</body>
+	<form action="AddBook.jsp" method="post" onsubmit="return check(this);">
+		<table align="center" width="450">
+			<tr>
+				<td align="center" colspan="2">
+					<h2>添加图书信息</h2>
+					<hr>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">图书名称：</td>
+				<td><input type="text" name="name" /></td>
+			</tr>
+			<tr>
+				<td align="right">价　　格：</td>
+				<td><input type="text" name="price" /></td>
+			</tr>
+			<tr>
+				<td align="right">数　　量：</td>
+				<td><input type="text" name="bookCount" /></td>
+			</tr>
+			<tr>
+				<td align="right">作　　者：</td>
+				<td><input type="text" name="author" /></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2">
+					<input type="submit" value="添　加">
+				</td>
+			</tr>
+		</table>
+	</form>
 	    <style>
 .footer{background-color:#D19275;text-align:center;padding:15px 10px;;length=400px;margin-top:150px;}</style>
 <body>

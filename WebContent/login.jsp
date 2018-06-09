@@ -44,7 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 /*style of main content*/</style>
  <div class="topnavi">
 <a href="主班级网页.jsp">首页</a>
-<a href="www.gzu.edu.cn/">班级情况</a>
+<a href="http://www.gzu.edu.cn/">学校主页</a>
+<a href="http://eie.gzu.edu.cn/">学院主页</a>
 <a href="class_apply.jsp">学生信息选择</a>
 <a href="login.jsp">用户登录</a>
 </div>   
@@ -67,7 +68,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </td>  
             </tr>  
             <tr>  
-                <td colspan="2"><input type="submit" value="登录" /><a href="register.jsp">注册</a>  
+                <td colspan="2"><input type="submit" value="登录" />
+                <a href="register.jsp">注册</a>  
                 </td>  
             </tr>  
         </table>  
